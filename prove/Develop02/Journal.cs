@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
@@ -54,6 +55,38 @@ public class Journal
     
 
         string[] stringsarray = ToBeSaved.ToArray();
+
+        Console.WriteLine("What would you like to call your journal?" );
+        string journal_save = Console.ReadLine();
+
+        System.IO.File.WriteAllLines(journal_save, stringsarray);
+
+
+    }
+
+    public void Load(){
+
+        Console.WriteLine("What file would you like to load? ");
+        string load_journal = Console.ReadLine();
+
+        
+        string[] loaded_journal = System.IO.File.ReadAllLines(load_journal);
+
+        foreach(string e in loaded_journal){
+            string[] load_split = e.Split("|");
+
+            string date = load_split[0];
+
+            string prompt = load_split[1];
+
+            string response = load_split[2];
+
+            Entry entry1 = new Entry(prompt, response, date);
+
+            EntryList.Add(entry1);
+
+        }
+
     }
 
     public string Prompt(){

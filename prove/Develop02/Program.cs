@@ -34,6 +34,7 @@ class Program
             }
 
             if (menu == 4){
+                journal1.Load();
 
             }
         }
