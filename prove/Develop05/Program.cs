@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.IO; 
+using System.Threading;
 
 class Program
 {
@@ -19,7 +20,16 @@ class Program
 
             Console.WriteLine($"\n--- Menu Options ---\nTotal Points: {_totalPoints}\n\n1. Create Goal\n 2. List Goals\n3. Save\n4. Load\n5. Record a Goal\n6. Quit");
 
+
+            Thread animationThread = new Thread(Animate);
+            animationThread.Start();
+
             menu = int.Parse(Console.ReadLine());
+
+            animationThread.Interrupt();
+
+
+            
 
             if (menu == 1){
                 
@@ -193,7 +203,24 @@ class Program
             return point_total;
 
         }
-        
 
-        
+        public static void Animate()
+    {
+        string[] animationFrames = { "|", "/", "-", "\\" };
+        int currentFrame = 0;
+
+        try
+        {
+            while (true)
+            {
+                Console.Write($"\rPlease select an option -- {animationFrames[currentFrame]} -- "); 
+                currentFrame = (currentFrame + 1) % animationFrames.Length;
+                Thread.Sleep(200); 
+            }
+        }
+        catch (ThreadInterruptedException)
+        {
+            Console.Write("\r");
+        }
     }
+}
