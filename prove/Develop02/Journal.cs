@@ -33,8 +33,6 @@ public class Journal
 
             Console.WriteLine(e.Display());
 
-            
-
         }
     }
 
