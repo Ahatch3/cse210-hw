@@ -17,7 +17,7 @@ class Program
             
 
         // I want to take the time again to say that with this assignment, I only went through the effort of hard coding it to make it easier to access. I would have gone through the process of appending each of these events to a list that I could then access later, but because of the wording, this seemed the most straight forward. 
-        // I probably would have also added the functionality to add a new event, which would have been fairly simple. Overall, I just want to say that I did it in this way because that's what seemed most clear from the directions.
+        // I probably would have also added the functionality to add a new event, which would have been fairly simple, and I could have also added a functionality to save and load, but that was not in the requirements. 
 
         while (menu != 2){
 
